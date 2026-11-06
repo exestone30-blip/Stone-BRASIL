@@ -754,9 +754,20 @@ body.editing #toast{top:10px!important;bottom:auto!important}
 .ad b{display:block;font-family:var(--display);font-weight:400;color:var(--sun);font-size:min(calc(4.6*var(--vh)),calc(3.1*var(--vw)));line-height:1.05;text-shadow:0 2px 0 #1a0f2e}
 .ad span.go{display:block;font-weight:700;font-size:min(calc(3.6*var(--vh)),calc(2.5*var(--vw)));color:#7be08f;line-height:1.1}
 </style>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#7000ff">
+<meta name="mobile-web-app-capable" content="yes">
 </head>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("STONE Brasil PWA ativado!"))
+      .catch(err => console.error(err));
+  });
+}
+</script>
 <body>
-
 
 <div id="app">
 <canvas id="bg" width="256" height="144" aria-hidden="true"></canvas>
